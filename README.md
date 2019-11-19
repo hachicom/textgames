@@ -9,4 +9,4 @@ Apenas alguns jogos para testar os conhecimentos em Python.
   - Jogo da forca ensinado em curso da Alura. As palavras são consumidas do arquivo palavras.txt
   
 - nico.py:
-  - Text Adventure em menus (estilo adventures japoneses como Phantasy Star Adventure do Game Gear) inspirado no Star Trek 1971 ou Stellar Treck do Atari 2600
+  - Text game em menus (estilo adventures japoneses como Phantasy Star Adventure do Game Gear) inspirado no Star Trek 1971 ou Stellar Treck do Atari 2600
