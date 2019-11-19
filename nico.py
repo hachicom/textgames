@@ -6,7 +6,7 @@ TODOs:
 	-Balancear gameplay (onde reduzir/aumentar o tempo e dificuldade)
 	-Cosméticos (níveis de dificuldade, confirmar se deseja sair do jogo)
 """
-import random, os
+import random, os, math
 import time as systime
 
 """
@@ -863,7 +863,7 @@ class Player:
 """
 Main Code
 """
-if __name__ == '__main__':
+def jogar():
 	bar = ''
 	for x in range(33):
 		bar = bar + '\u2550'
@@ -885,6 +885,7 @@ if __name__ == '__main__':
 	enemy = Enemy(goal - 1)
 	bases = random.randrange(2, 4)
 	treasures = (time//60) + random.randrange(0, 4)
+	qtd_elastico = math.floor(treasures * 0.20)
 	
 	#Sorteando inimigos (deixando 1 sem criar, será o final boss)
 	for x in range((goal - 1)):
@@ -909,12 +910,16 @@ if __name__ == '__main__':
 		allies.pop(0)
 		
 	#Sorteando tesouros
-	treasures_list = ['petisco','petisco','petisco','elastico','elastico']
+	treasures_list = ['petisco','elastico']
 	for x in range(treasures):
 		if len(rooms_to_populate) <= 0:
 			break
 		sala_idx = random.randrange(0, len(rooms_to_populate))
 		tesouro = treasures_list[random.randrange(0,len(treasures_list))]
+		if tesouro == 'elastico':
+			qtd_elastico -= 1
+			if qtd_elastico <= 0:
+				treasures_list.pop(1)
 		rooms[rooms_to_populate[sala_idx]]['treasure'].append(tesouro)
 		if len(rooms[rooms_to_populate[sala_idx]]['treasure']) >= 3:
 			rooms_to_populate.pop(sala_idx)	
@@ -929,9 +934,13 @@ if __name__ == '__main__':
 		rooms_to_populate.pop(sala_idx)
 	
 	#Debug (comentar/remover depois de finalizado)
-	#print()
-	#print(rooms)
+	'''
+	for x in range(len(rooms)):
+		print(rooms[x]['name'])
+		print(rooms[x]['treasure'])
+	'''
 	
+	#prompt player to start the adventure
 	press_to_continue()
 	
 	#Game Loop	
@@ -948,3 +957,9 @@ if __name__ == '__main__':
 	print()
 	print("Obrigado por jogar Nico's Text Adventure.")
 	print("Nos vemos na próxima aventura!")
+
+'''
+Start game
+'''
+if __name__ == '__main__':
+	jogar()
