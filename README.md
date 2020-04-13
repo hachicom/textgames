@@ -13,3 +13,4 @@ Apenas alguns jogos para testar os conhecimentos em Python.
 
 - solodungeon.py:
   - Versão digital do jogo Print & Play "Solo Dungeon Bash", portado da versão C criada por Cristobal Vasquez (https://github.com/crisCourier6/Lonesome-Dungeon-Madness)
+
